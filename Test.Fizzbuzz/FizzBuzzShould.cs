@@ -39,6 +39,13 @@ namespace Test.Fizzbuzz
 
             var expected = new[] {"1", "2", "Fizz","4","Buzz","Fizz","7","8","Fizz","Buzz","11","Fizz","13","14","FizzBuzz"};
             Assert.AreEqual(expected,result);
+        }        
+        
+        [Test]
+        public void throw_exception_when_array_is_empty() {
+            var lengthArray = 0;
+
+            Assert.Throws<ArgumentOutOfRangeException>(() => fizzBuzz.GetFizzBuzzArray(lengthArray));
         }
     }
 }

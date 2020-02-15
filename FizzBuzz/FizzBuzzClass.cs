@@ -5,6 +5,7 @@
         }
 
         public string[] GetFizzBuzzArray(int lengthArray) {
+            CheckLengthOfArray(lengthArray);
             fizzBuzzArray = new string[lengthArray];
             for (int count = 0; count < fizzBuzzArray.Length; count++) {
                 fizzBuzzArray[count] = (count+1).ToString();
@@ -13,6 +14,10 @@
                 if(MultiplyOfFifteen(count)) fizzBuzzArray[count] = "FizzBuzz";
             }
             return fizzBuzzArray;
+        }
+
+        private void CheckLengthOfArray(int lengthArray) {
+            if(lengthArray <= 0) throw new System.ArgumentOutOfRangeException();
         }
 
         private bool MultiplyOfFifteen(in int count) {
