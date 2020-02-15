@@ -1,4 +1,4 @@
-﻿namespace FizzBuzz {
+namespace FizzBuzz {
     public class FizzBuzzClass {
         private string[] arrayResult;
         public FizzBuzzClass() {
@@ -8,7 +8,7 @@
             arrayResult = new string[lengthArray];
             for (int count = 0; count < arrayResult.Length; count++) {
                 arrayResult[count] = (count+1).ToString();
-                if((count + 1) % 3 == 0) arrayResult[count] = "Fizz";
+                if(MultiplyOfThree(count)) arrayResult[count] = "Fizz";
             }
             return arrayResult;
         }
