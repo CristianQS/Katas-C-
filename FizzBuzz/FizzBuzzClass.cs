@@ -1,18 +1,18 @@
 ﻿namespace FizzBuzz {
     public class FizzBuzzClass {
-        private string[] arrayResult;
+        private string[] fizzBuzzArray;
         public FizzBuzzClass() {
         }
 
         public string[] GetFizzBuzzArray(int lengthArray) {
-            arrayResult = new string[lengthArray];
-            for (int count = 0; count < arrayResult.Length; count++) {
-                arrayResult[count] = (count+1).ToString();
-                if(MultiplyOfThree(count)) arrayResult[count] = "Fizz";
-                if(MultiplyOfFive(count)) arrayResult[count] = "Buzz";
-                if(MultiplyOfFifteen(count)) arrayResult[count] = "FizzBuzz";
+            fizzBuzzArray = new string[lengthArray];
+            for (int count = 0; count < fizzBuzzArray.Length; count++) {
+                fizzBuzzArray[count] = (count+1).ToString();
+                if(MultiplyOfThree(count)) fizzBuzzArray[count] = "Fizz";
+                if(MultiplyOfFive(count)) fizzBuzzArray[count] = "Buzz";
+                if(MultiplyOfFifteen(count)) fizzBuzzArray[count] = "FizzBuzz";
             }
-            return arrayResult;
+            return fizzBuzzArray;
         }
 
         private bool MultiplyOfFifteen(in int count) {
