@@ -10,8 +10,13 @@
                 arrayResult[count] = (count+1).ToString();
                 if(MultiplyOfThree(count)) arrayResult[count] = "Fizz";
                 if(MultiplyOfFive(count)) arrayResult[count] = "Buzz";
+                if(MultiplyOfFifteen(count)) arrayResult[count] = "FizzBuzz";
             }
             return arrayResult;
+        }
+
+        private bool MultiplyOfFifteen(in int count) {
+            return (count + 1) % 15 == 0;
         }
 
         private bool MultiplyOfFive(int count) {

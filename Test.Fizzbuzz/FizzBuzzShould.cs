@@ -29,6 +29,16 @@ namespace Test.Fizzbuzz
 
             var expected = new[] {"1", "2", "Fizz","4","Buzz","Fizz","7","8","Fizz","Buzz"};
             Assert.AreEqual(expected,result);
+        }        
+        
+        [Test]
+        public void get_fizz_when_num_is_multiply_of_15() {
+            var lengthArray = 15;
+
+            var result = fizzBuzz.GetFizzBuzzArray(lengthArray);
+
+            var expected = new[] {"1", "2", "Fizz","4","Buzz","Fizz","7","8","Fizz","Buzz","11","Fizz","13","14","FizzBuzz"};
+            Assert.AreEqual(expected,result);
         }
     }
 }
