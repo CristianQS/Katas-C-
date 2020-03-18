@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using MarsRover;
 using NUnit.Framework;
 
 namespace MarsRoverTest
@@ -5,6 +7,8 @@ namespace MarsRoverTest
     [TestFixture]
     public class Tests
     {
+        private const string NORTH_DIRECTION = "N";
+
         [SetUp]
         public void Setup()
         {
@@ -12,21 +16,21 @@ namespace MarsRoverTest
 
         [Test]
         public void given_a_initial_point_and_direction_for_a_rover() {
-            var Point = new Point(0,0);
-            var Direction = "N";
+            var point = new Point(0,0);
+            const string direction = NORTH_DIRECTION;
 
-            var Rover = new Rover(Point, Direction);
+            var rover = new Rover(point, direction);
 
-            
-            Assert.AreEqual(Rover.Point.x, 0);
-            Assert.AreEqual(Rover.Point.y, 0);
-            Assert.AreEqual(Rover.Direction, "N");
+
+            Assert.AreEqual(0, rover.Point.x);
+            Assert.AreEqual(0, rover.Point.y);
+            Assert.AreEqual(NORTH_DIRECTION, rover.Direction);
         }
-    }
 
         [Test]
-        private Point point;
-        private string direction;
+        public void rover_with_one_command_moves_to_forward() {
+            var point = new Point(0, 0);
+            var Direction = NORTH_DIRECTION;
 
             var rover = new Rover(point, Direction);
             var commandsList = new List<string>(){"F"};
