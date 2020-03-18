@@ -24,27 +24,17 @@ namespace MarsRoverTest
         }
     }
 
-    public class Rover {
+        [Test]
         private Point point;
         private string direction;
 
-        public Rover(Point point, string direction) {
-            this.point = point;
-            this.direction = direction;
-        }
+            var rover = new Rover(point, Direction);
+            var commandsList = new List<string>(){"F"};
+            rover.Execute(commandsList);
 
-        public Point Point => point;
-
-        public string Direction => direction;
-    }
-
-    public class Point {
-        public int x;
-        public int y;
-
-        public Point(int x, int y) {
-            this.x = x;
-            this.y = y;
+            Assert.AreEqual(0,rover.Point.x);
+            Assert.AreEqual(1,rover.Point.y);
+            Assert.AreEqual(NORTH_DIRECTION,rover.Direction );
         }
     }
 }
