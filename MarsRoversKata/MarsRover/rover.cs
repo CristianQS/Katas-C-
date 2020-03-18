@@ -18,6 +18,7 @@ namespace MarsRover {
             commandsList.ForEach(command => {
                 if (command.Equals("F")) this.point.y++;
                 if (command.Equals("B")) this.point.y--;
+                if (command.Equals("R")) this.direction = "E";
             });
         }
     }

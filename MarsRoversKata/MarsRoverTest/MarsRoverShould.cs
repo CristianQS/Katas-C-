@@ -5,7 +5,7 @@ using NUnit.Framework;
 namespace MarsRoverTest
 {
     [TestFixture]
-    public class Tests
+    public class MarsRoverShould
     {
         private const string NORTH_DIRECTION = "N";
 
@@ -52,6 +52,20 @@ namespace MarsRoverTest
             Assert.AreEqual(0,rover.Point.x);
             Assert.AreEqual(-1,rover.Point.y);
             Assert.AreEqual(NORTH_DIRECTION,rover.Direction );
+        }        
+        
+        [Test]
+        public void rover_with_one_command_moves_to_right() {
+            var point = new Point(0, 0);
+            var Direction = NORTH_DIRECTION;
+
+            var rover = new Rover(point, Direction);
+            var commandsList = new List<string>(){"R"};
+            rover.Execute(commandsList);
+
+            Assert.AreEqual(0,rover.Point.x);
+            Assert.AreEqual(0,rover.Point.y);
+            Assert.AreEqual("E",rover.Direction );
         }
     }
 }
