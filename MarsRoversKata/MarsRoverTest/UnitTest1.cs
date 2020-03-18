@@ -21,7 +21,6 @@ namespace MarsRoverTest
 
             var rover = new Rover(point, direction);
 
-
             Assert.AreEqual(0, rover.Point.x);
             Assert.AreEqual(0, rover.Point.y);
             Assert.AreEqual(NORTH_DIRECTION, rover.Direction);
@@ -38,6 +37,20 @@ namespace MarsRoverTest
 
             Assert.AreEqual(0,rover.Point.x);
             Assert.AreEqual(1,rover.Point.y);
+            Assert.AreEqual(NORTH_DIRECTION,rover.Direction );
+        }        
+        
+        [Test]
+        public void rover_with_one_command_moves_to_backward() {
+            var point = new Point(0, 0);
+            var Direction = NORTH_DIRECTION;
+
+            var rover = new Rover(point, Direction);
+            var commandsList = new List<string>(){"B"};
+            rover.Execute(commandsList);
+
+            Assert.AreEqual(0,rover.Point.x);
+            Assert.AreEqual(-1,rover.Point.y);
             Assert.AreEqual(NORTH_DIRECTION,rover.Direction );
         }
     }
