@@ -82,15 +82,15 @@ namespace MarsRoverTest
         } 
         
         [Test]
-        public void rover_with_multiple_command_moves_to_left() {
+        public void rover_with_multiple_command_moves_to_left_front() {
             var point = new Point(0, 0);
             var Direction = Directions.North;
 
             var rover = new Rover(point, Direction);
-            var commandsList = new List<Commands>() { Commands.Left };
-            rover.Execute(commandsList); rover.Execute(commandsList);
+            var commandsList = new List<Commands>() { Commands.Left, Commands.Forward };
+            rover.Execute(commandsList);
 
-            Assert.AreEqual(0,rover.Point.x);
+            Assert.AreEqual(-1,rover.Point.x);
             Assert.AreEqual(0,rover.Point.y);
             Assert.AreEqual(Directions.West, rover.Direction );
         }
