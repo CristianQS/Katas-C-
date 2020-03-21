@@ -3,22 +3,23 @@ using System.Collections.Generic;
 namespace MarsRover {
     public class Rover {
         private Point point;
-        private string direction;
+        private Directions direction;
 
-        public Rover(Point point, string direction) {
+        public Rover(Point point, Directions direction) {
             this.point = point;
             this.direction = direction;
         }
 
         public Point Point => point;
 
-        public string Direction => direction;
+        public Directions Direction => direction;
 
-        public void Execute(List<string> commandsList) {
+        public void Execute(List<Commands> commandsList) {
             commandsList.ForEach(command => {
-                if (command.Equals("F")) this.point.y++;
-                if (command.Equals("B")) this.point.y--;
-                if (command.Equals("R")) this.direction = "E";
+                if (command.Equals(Commands.Forward)) this.point.y++;
+                if (command.Equals(Commands.Backward)) this.point.y--;
+                if (command.Equals(Commands.Right)) this.direction = Directions.East;
+                if (command.Equals(Commands.Left)) this.direction = Directions.West;
             });
         }
     }
