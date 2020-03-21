@@ -18,14 +18,22 @@ namespace MarsRover {
                     if (command.Equals(Commands.Backward)) this.Point.y--;
                     if (command.Equals(Commands.Right)) this.Direction = Directions.East;
                     if (command.Equals(Commands.Left)) this.Direction = Directions.West;
+                } else if (this.Direction == Directions.South) {
+                    if (command.Equals(Commands.Forward)) this.Point.y--;
+                    if (command.Equals(Commands.Backward)) this.Point.y++;
+                    if (command.Equals(Commands.Right)) this.Direction = Directions.West;
+                    if (command.Equals(Commands.Left)) this.Direction = Directions.East;
                 } else if(this.Direction == Directions.West) {
                     if (command.Equals(Commands.Forward)) this.Point.x--;
                     if (command.Equals(Commands.Backward)) this.Point.x++;
                     if (command.Equals(Commands.Right)) this.Direction = Directions.North;
                     if (command.Equals(Commands.Left)) this.Direction = Directions.South;
+                } else if(this.Direction == Directions.East) {
+                    if (command.Equals(Commands.Forward)) this.Point.x++;
+                    if (command.Equals(Commands.Backward)) this.Point.x--;
+                    if (command.Equals(Commands.Right)) this.Direction = Directions.South;
+                    if (command.Equals(Commands.Left)) this.Direction = Directions.North;
                 }
-                
-            
             });
         }
     }
