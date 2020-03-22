@@ -17,22 +17,31 @@ namespace MarsRover {
                 if (this.Direction == Directions.North) {
                     commandLogicFactory.executeRoverNorthCommandLogic(command);
                 } else if (this.Direction == Directions.South) {
-                    if (command.Equals(Commands.Forward)) this.Point.y--;
-                    if (command.Equals(Commands.Backward)) this.Point.y++;
-                    if (command.Equals(Commands.Right)) this.Direction = Directions.West;
-                    if (command.Equals(Commands.Left)) this.Direction = Directions.East;
-                } else if(this.Direction == Directions.West) {
-                    if (command.Equals(Commands.Forward)) this.Point.x--;
-                    if (command.Equals(Commands.Backward)) this.Point.x++;
-                    if (command.Equals(Commands.Right)) this.Direction = Directions.North;
-                    if (command.Equals(Commands.Left)) this.Direction = Directions.South;
+                    commandLogicFactory.executeRoverSouthCommandLogic(command);
+                }
+                else if(this.Direction == Directions.West) {
+                    executeWestCommandsLogic(command);
                 } else if(this.Direction == Directions.East) {
-                    if (command.Equals(Commands.Forward)) this.Point.x++;
-                    if (command.Equals(Commands.Backward)) this.Point.x--;
-                    if (command.Equals(Commands.Right)) this.Direction = Directions.South;
-                    if (command.Equals(Commands.Left)) this.Direction = Directions.North;
+                    executeEastCommandsLogic(command);
                 }
             });
         }
+
+        private void executeEastCommandsLogic(CommandsValues commandValues) {
+            if (commandValues.Equals(CommandsValues.Forward)) this.Point.x++;
+            if (commandValues.Equals(CommandsValues.Backward)) this.Point.x--;
+            if (commandValues.Equals(CommandsValues.Right)) this.Direction = Directions.South;
+            if (commandValues.Equals(CommandsValues.Left)) this.Direction = Directions.North;
+        }
+
+        private void executeWestCommandsLogic(CommandsValues commandValues) {
+            if (commandValues.Equals(CommandsValues.Forward)) this.Point.x--;
+            if (commandValues.Equals(CommandsValues.Backward)) this.Point.x++;
+            if (commandValues.Equals(CommandsValues.Right)) this.Direction = Directions.North;
+            if (commandValues.Equals(CommandsValues.Left)) this.Direction = Directions.South;
+        }
+
+
+
     }
 }
