@@ -41,11 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands.cs" />
+    <Compile Include="CommandsValues.cs" />
     <Compile Include="Directions.cs" />
+    <Compile Include="Factory\CommandLogicFactory.cs" />
+    <Compile Include="Factory\CommandsLogic.cs" />
+    <Compile Include="Factory\NorthCommandLogic.cs" />
+    <Compile Include="Factory\SouthCommandLogic.cs" />
     <Compile Include="Point.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rover.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
