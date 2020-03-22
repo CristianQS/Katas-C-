@@ -49,6 +49,8 @@
     <Compile Include="Factory\NorthCommandLogic.cs" />
     <Compile Include="Factory\SouthCommandLogic.cs" />
     <Compile Include="Factory\WestCommandLogic.cs" />
+    <Compile Include="Mars.cs" />
+    <Compile Include="Planet.cs" />
     <Compile Include="Point.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rover.cs" />
