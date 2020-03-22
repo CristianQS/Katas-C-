@@ -1,4 +1,6 @@
-﻿namespace MarsRover.Factory {
+﻿using MarsRover.Enums;
+
+namespace MarsRover.Factory {
     public interface CommandsLogic {
         Rover Rover { get; }
         CommandsValues Command { get; }

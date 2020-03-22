@@ -1,4 +1,6 @@
-﻿namespace MarsRover.Factory {
+﻿using MarsRover.Enums;
+
+namespace MarsRover.Factory {
     public class CommandLogicFactory {
         public Planet Mars { get; }
         private Rover Rover;

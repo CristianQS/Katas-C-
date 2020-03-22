@@ -1,4 +1,4 @@
-﻿namespace MarsRover {
+﻿namespace MarsRover.Enums {
 
     public enum CommandsValues {
         Forward = 'F',

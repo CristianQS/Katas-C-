@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using MarsRover;
+using MarsRover.Enums;
 using MarsRover.Exceptions;
 using NUnit.Framework;
 

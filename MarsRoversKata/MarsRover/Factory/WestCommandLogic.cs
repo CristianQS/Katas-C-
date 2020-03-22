@@ -1,4 +1,5 @@
 ﻿using System;
+using MarsRover.Enums;
 
 namespace MarsRover.Factory {
     public class WestCommandLogic : CommandsLogic {
@@ -13,7 +14,7 @@ namespace MarsRover.Factory {
         }
 
         public Rover execute() {
-            if (Planet.Longitude == Math.Abs(Rover.Point.x) && Command.Equals(CommandsValues.Forward)) {
+            if ((-Planet.Longitude) == Rover.Point.x && Command.Equals(CommandsValues.Forward)) {
                 Rover.Point.x = Planet.Longitude;
                 return Rover;
             }

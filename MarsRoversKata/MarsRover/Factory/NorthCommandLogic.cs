@@ -1,4 +1,5 @@
 ﻿using System;
+using MarsRover.Enums;
 
 namespace MarsRover.Factory {
     public class NorthCommandLogic : CommandsLogic {
@@ -24,5 +25,6 @@ namespace MarsRover.Factory {
             if (Command.Equals(CommandsValues.Left)) Rover.Direction = Directions.West;
             return Rover;
         }
+
     }
 }

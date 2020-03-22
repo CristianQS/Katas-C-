@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using MarsRover.Enums;
 using MarsRover.Factory;
 
 namespace MarsRover {

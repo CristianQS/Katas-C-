@@ -41,8 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommandsValues.cs" />
-    <Compile Include="Directions.cs" />
+    <Compile Include="Enums\CommandsValues.cs" />
+    <Compile Include="Enums\Directions.cs" />
     <Compile Include="Exceptions\NextPositionHasAnObstaculeException.cs" />
     <Compile Include="Factory\CommandLogicFactory.cs" />
     <Compile Include="Factory\CommandsLogic.cs" />
@@ -55,6 +55,7 @@
     <Compile Include="Point.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rover.cs" />
+    <Compile Include="Shared\RoverPositionHelper.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

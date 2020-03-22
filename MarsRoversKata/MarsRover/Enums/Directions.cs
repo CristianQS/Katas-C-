@@ -1,4 +1,4 @@
-﻿namespace MarsRover {
+﻿namespace MarsRover.Enums {
     public enum Directions {
         North = 'N',
         East = 'E',
