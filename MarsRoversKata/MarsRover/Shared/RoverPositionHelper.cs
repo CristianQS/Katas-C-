@@ -1,13 +1,22 @@
-﻿using MarsRover.Enums;
-using MarsRover.Exceptions;
+﻿using MarsRover.Exceptions;
 
 namespace MarsRover.Shared {
     public static class RoverPositionHelper {
         private const string Obstacule = "X";
 
-        public static bool IsRoverCrossingTheVerticalEdge(Rover rover, int Latitude, CommandsValues command, out Rover isCrossing) {
-            if ((-Latitude) == rover.Point.y && command.Equals(CommandsValues.Forward)) {
-                rover.Point.y = Latitude;
+        public static bool IsRoverCrossingTheVerticalEdge(Rover rover, int Latitude, out Rover isCrossing) {
+            if (Latitude == rover.Point.y) {
+                rover.Point.y = -Latitude;
+                isCrossing = rover;
+                return true;
+            }
+
+            isCrossing = null;
+            return false;
+        }
+        public static bool IsRoverCrossingTheHorizontalEdge(Rover rover, int Longitude, out Rover isCrossing) {
+            if (Longitude == rover.Point.x) {
+                rover.Point.x = -Longitude;
                 isCrossing = rover;
                 return true;
             }
@@ -16,10 +25,17 @@ namespace MarsRover.Shared {
             return false;
         }
 
-        public static void checkIfThereIsAnObstacule(Rover rover, Planet planet, CommandsValues command) {
-            if (planet.Map[$"{rover .Point.x},{rover .Point.y - 1}"].Equals(Obstacule) && (command.Equals(CommandsValues.Forward)))
+        public static void checkIfThereIsAnObstaculeInTheVerticalAxis(Rover rover, Planet planet) {
+            if (planet.Map[$"{rover .Point.x},{rover .Point.y - 1}"].Equals(Obstacule))
                 throw new NextPositionHasAnObstaculeException();
-            if (planet.Map[$"{rover .Point.x},{rover .Point.y + 1}"].Equals(Obstacule) && (command.Equals(CommandsValues.Backward)))
+            if (planet.Map[$"{rover .Point.x},{rover .Point.y + 1}"].Equals(Obstacule))
+                throw new NextPositionHasAnObstaculeException();
+        }
+
+        public static void checkIfThereIsAnObstaculeInTheHorizontalAxis(Rover rover, Planet planet) {
+            if (planet.Map[$"{rover.Point.x - 1},{rover.Point.y}"].Equals(Obstacule))
+                throw new NextPositionHasAnObstaculeException();
+            if (planet.Map[$"{rover.Point.x + 1},{rover.Point.y}"].Equals(Obstacule))
                 throw new NextPositionHasAnObstaculeException();
         }
     }
