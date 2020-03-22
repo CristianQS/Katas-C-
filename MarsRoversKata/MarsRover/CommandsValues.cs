@@ -1,8 +1,10 @@
 ﻿namespace MarsRover {
-    public enum Commands {
+
+    public enum CommandsValues {
         Forward = 'F',
         Backward = 'B',
         Right = 'R',
         Left = 'L'
     }
+
 }
