@@ -1,18 +1,20 @@
 ﻿namespace MarsRover.Factory {
     public class EastCommandLogic : CommandsLogic {
-        private Rover Rover { get; }
-        private CommandsValues Command { get; }
+        public Rover Rover { get; }
+        public CommandsValues Command { get; }
+        public Planet Planet { get; }
 
-        public EastCommandLogic(Rover rover, CommandsValues command) {
-            this.Command = command;
-            this.Rover = rover;
+        public EastCommandLogic(Rover rover, CommandsValues command, Planet planet) {
+            Command = command;
+            Planet = planet;
+            Rover = rover;
         }
 
         public Rover execute() {
-            if (Command.Equals(CommandsValues.Forward)) this.Rover.Point.x++;
-            if (Command.Equals(CommandsValues.Backward)) this.Rover.Point.x--;
-            if (Command.Equals(CommandsValues.Right)) this.Rover.Direction = Directions.South;
-            if (Command.Equals(CommandsValues.Left)) this.Rover.Direction = Directions.North;
+            if (Command.Equals(CommandsValues.Forward)) Rover.Point.x++;
+            if (Command.Equals(CommandsValues.Backward)) Rover.Point.x--;
+            if (Command.Equals(CommandsValues.Right)) Rover.Direction = Directions.South;
+            if (Command.Equals(CommandsValues.Left)) Rover.Direction = Directions.North;
             return Rover;
         }
     }

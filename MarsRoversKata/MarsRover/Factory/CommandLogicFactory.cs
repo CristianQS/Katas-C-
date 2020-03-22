@@ -1,25 +1,27 @@
 ﻿namespace MarsRover.Factory {
     public class CommandLogicFactory {
-        private Rover rover;
+        public Planet Mars { get; }
+        private Rover Rover;
 
-        public CommandLogicFactory(Rover rover) {
-            this.rover = rover;
+        public CommandLogicFactory(Rover rover, Planet mars) {
+            Mars = mars;
+            Rover = rover;
         }
 
         public Rover executeRoverNorthCommandLogic(CommandsValues command) {
-            return new NorthCommandLogic(rover, command).execute();
+            return new NorthCommandLogic(Rover, command, Mars).execute();
         }
 
         public Rover executeRoverSouthCommandLogic(CommandsValues command) {
-            return new SouthCommandLogic(rover, command).execute();
+            return new SouthCommandLogic(Rover, command, Mars).execute();
         }
 
         public Rover executeRoverWestCommandLogic(CommandsValues command) {
-            return  new WestCommandLogic(rover, command).execute();
+            return  new WestCommandLogic(Rover, command, Mars).execute();
         }
 
         public Rover executeRoverEastCommandLogic(CommandsValues command) {
-            return new EastCommandLogic(rover, command).execute();
+            return new EastCommandLogic(Rover, command, Mars).execute();
         }
     }
 }
