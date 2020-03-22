@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using MarsRover.Factory;
 
 namespace MarsRover {
     public class Rover {
@@ -10,14 +11,11 @@ namespace MarsRover {
             this.Direction = direction;
         }
 
-
-        public void Execute(List<Commands> commandsList) {
+        public void Execute(List<CommandsValues> commandsList) {
+            var commandLogicFactory = new CommandLogicFactory(this);
             commandsList.ForEach(command => {
                 if (this.Direction == Directions.North) {
-                    if (command.Equals(Commands.Forward)) this.Point.y++;
-                    if (command.Equals(Commands.Backward)) this.Point.y--;
-                    if (command.Equals(Commands.Right)) this.Direction = Directions.East;
-                    if (command.Equals(Commands.Left)) this.Direction = Directions.West;
+                    commandLogicFactory.executeRoverNorthCommandLogic(command);
                 } else if (this.Direction == Directions.South) {
                     if (command.Equals(Commands.Forward)) this.Point.y--;
                     if (command.Equals(Commands.Backward)) this.Point.y++;
