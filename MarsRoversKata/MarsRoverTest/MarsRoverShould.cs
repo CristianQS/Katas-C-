@@ -31,7 +31,7 @@ namespace MarsRoverTest
             var Direction = Directions.North;
 
             var rover = new Rover(point, Direction);
-            var commandsList = new List<Commands>(){Commands.Forward};
+            var commandsList = new List<CommandsValues>(){CommandsValues.Forward};
             rover.Execute(commandsList);
 
             Assert.AreEqual(0,rover.Point.x);
@@ -45,7 +45,7 @@ namespace MarsRoverTest
             var Direction = Directions.North;
 
             var rover = new Rover(point, Direction);
-            var commandsList = new List<Commands>(){Commands.Backward};
+            var commandsList = new List<CommandsValues>(){CommandsValues.Backward};
             rover.Execute(commandsList);
 
             Assert.AreEqual(0,rover.Point.x);
@@ -59,7 +59,7 @@ namespace MarsRoverTest
             var Direction = Directions.North;
 
             var rover = new Rover(point, Direction);
-            var commandsList = new List<Commands>(){Commands.Right};
+            var commandsList = new List<CommandsValues>(){CommandsValues.Right};
             rover.Execute(commandsList);
 
             Assert.AreEqual(0,rover.Point.x);
@@ -73,7 +73,7 @@ namespace MarsRoverTest
             var Direction = Directions.North;
 
             var rover = new Rover(point, Direction);
-            var commandsList = new List<Commands>(){Commands.Left};
+            var commandsList = new List<CommandsValues>(){CommandsValues.Left};
             rover.Execute(commandsList);
 
             Assert.AreEqual(0,rover.Point.x);
@@ -87,7 +87,7 @@ namespace MarsRoverTest
             var Direction = Directions.North;
 
             var rover = new Rover(point, Direction);
-            var commandsList = new List<Commands>() { Commands.Left, Commands.Forward };
+            var commandsList = new List<CommandsValues>() { CommandsValues.Left, CommandsValues.Forward };
             rover.Execute(commandsList);
 
             Assert.AreEqual(-1,rover.Point.x);
@@ -101,8 +101,8 @@ namespace MarsRoverTest
             var Direction = Directions.North;
 
             var rover = new Rover(point, Direction);
-            var commandsList = new List<Commands>() { Commands.Left, Commands.Forward, Commands.Left, 
-                    Commands.Backward, Commands.Left, Commands.Forward, Commands.Right, Commands.Backward };
+            var commandsList = new List<CommandsValues>() { CommandsValues.Left, CommandsValues.Forward, CommandsValues.Left, 
+                    CommandsValues.Backward, CommandsValues.Left, CommandsValues.Forward, CommandsValues.Right, CommandsValues.Backward };
             rover.Execute(commandsList);
 
             Assert.AreEqual(0,rover.Point.x);
