@@ -1,7 +1,9 @@
 ﻿using System;
+using MarsRover.Exceptions;
 
 namespace MarsRover.Factory {
     public class SouthCommandLogic : CommandsLogic {
+        private const string Obstacule = "X";
         public Rover Rover { get; }
         public CommandsValues Command { get; }
         public Planet Planet { get; }
@@ -15,7 +17,7 @@ namespace MarsRover.Factory {
         public Rover execute() {
             if (IsRoverCrossingTheEdge(out var isCrossing)) return isCrossing;
 
-            var nextPosition = Planet.Map[$"{Rover.Point.x},{Rover.Point.y--}"];
+            checkIfThereIsAnObstacule();
             if (Command.Equals(CommandsValues.Forward)) Rover.Point.y--;
             if (Command.Equals(CommandsValues.Backward)) Rover.Point.y++;
             if (Command.Equals(CommandsValues.Right)) Rover.Direction = Directions.West;
@@ -23,12 +25,19 @@ namespace MarsRover.Factory {
             return Rover;
         }
 
+        private void checkIfThereIsAnObstacule() {
+            var position = Planet.Map[$"{Rover.Point.x},{Rover.Point.y -1 }"];
+            if (Planet.Map[$"{Rover.Point.x},{Rover.Point.y - 1}"].Equals(Obstacule) && (Command.Equals(CommandsValues.Forward)))
+                throw new NextPositionHasAnObstaculeException();
+            if (Planet.Map[$"{Rover.Point.x},{Rover.Point.y + 1}"].Equals(Obstacule) && (Command.Equals(CommandsValues.Backward)))
+                throw new NextPositionHasAnObstaculeException();
+        }
+
         private bool IsRoverCrossingTheEdge(out Rover isCrossing) {
-            if (Planet.Latitude == Math.Abs(Rover.Point.y) && Command.Equals(CommandsValues.Forward)) {
+            if ((-Planet.Latitude) == Rover.Point.y && Command.Equals(CommandsValues.Forward)) {
                 Rover.Point.y = Planet.Latitude;
                 isCrossing = Rover;
                 return true;
-                
             }
 
             isCrossing = null;

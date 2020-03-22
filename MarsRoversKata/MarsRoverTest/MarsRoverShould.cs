@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using MarsRover;
+using MarsRover.Exceptions;
 using NUnit.Framework;
 
 namespace MarsRoverTest
@@ -149,6 +150,19 @@ namespace MarsRoverTest
             Assert.AreEqual(2, rover.Point.y);
             Assert.AreEqual(Directions.South, rover.Direction);
 
+        }
+
+        [Test]
+        public void rover_cross() {
+            var point = new Point(1, 2);
+            var direction = Directions.South;
+            Mars.Map["1,1"] = "X";
+
+            var rover = new Rover(point, direction);
+
+            var commandsList = new List<CommandsValues>() { CommandsValues.Forward };
+
+            Assert.Throws<NextPositionHasAnObstaculeException>(() => rover.Execute(commandsList, Mars));
         }
     }
 }

@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="CommandsValues.cs" />
     <Compile Include="Directions.cs" />
+    <Compile Include="Exceptions\NextPositionHasAnObstaculeException.cs" />
     <Compile Include="Factory\CommandLogicFactory.cs" />
     <Compile Include="Factory\CommandsLogic.cs" />
     <Compile Include="Factory\EastCommandLogic.cs" />
