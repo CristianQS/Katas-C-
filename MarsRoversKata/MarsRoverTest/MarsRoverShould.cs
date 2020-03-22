@@ -120,5 +120,21 @@ namespace MarsRoverTest
             Assert.AreEqual(Directions.East, rover.Direction);
 
         }
+
+        [Test]
+        public void rover_cross_the_planet_from_north_edge_to_the_south_edge() {
+            var point = new Point(4,2);
+            var direction = Directions.North;
+            var rover = new Rover(point, direction);
+
+            var commandsList = new List<CommandsValues>() { CommandsValues.Forward };
+            rover.Execute(commandsList, Mars);
+
+            Assert.AreEqual(4, rover.Point.x);
+            Assert.AreEqual(-2, rover.Point.y);
+            Assert.AreEqual(Directions.North, rover.Direction);
+
+        }
+        }
     }
 }
