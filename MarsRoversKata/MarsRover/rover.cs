@@ -11,15 +11,14 @@ namespace MarsRover {
             this.Direction = direction;
         }
 
-        public void Execute(List<CommandsValues> commandsList) {
-            var commandLogicFactory = new CommandLogicFactory(this);
+        public void Execute(List<CommandsValues> commandsList, Planet mars) {
+            var commandLogicFactory = new CommandLogicFactory(this, mars);
             commandsList.ForEach(command => {
                 if (this.Direction == Directions.North) {
                     commandLogicFactory.executeRoverNorthCommandLogic(command);
                 } else if (this.Direction == Directions.South) {
                     commandLogicFactory.executeRoverSouthCommandLogic(command);
-                }
-                else if(this.Direction == Directions.West) {
+                } else if(this.Direction == Directions.West) {
                     commandLogicFactory.executeRoverWestCommandLogic(command);
                 } else if(this.Direction == Directions.East) {
                     commandLogicFactory.executeRoverEastCommandLogic(command);
