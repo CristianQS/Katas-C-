@@ -7,7 +7,6 @@ namespace MarsRoverTest
     [TestFixture]
     public class MarsRoverShould
     {
-        private const string NORTH_DIRECTION = "N";
 
         [SetUp]
         public void Setup()
@@ -17,55 +16,98 @@ namespace MarsRoverTest
         [Test]
         public void given_a_initial_point_and_direction_for_a_rover() {
             var point = new Point(0,0);
-            const string direction = NORTH_DIRECTION;
+            var direction = Directions.North;
 
             var rover = new Rover(point, direction);
 
             Assert.AreEqual(0, rover.Point.x);
             Assert.AreEqual(0, rover.Point.y);
-            Assert.AreEqual(NORTH_DIRECTION, rover.Direction);
+            Assert.AreEqual(Directions.North, rover.Direction);
         }
 
         [Test]
         public void rover_with_one_command_moves_to_forward() {
             var point = new Point(0, 0);
-            var Direction = NORTH_DIRECTION;
+            var Direction = Directions.North;
 
             var rover = new Rover(point, Direction);
-            var commandsList = new List<string>(){"F"};
+            var commandsList = new List<CommandsValues>(){CommandsValues.Forward};
             rover.Execute(commandsList);
 
             Assert.AreEqual(0,rover.Point.x);
             Assert.AreEqual(1,rover.Point.y);
-            Assert.AreEqual(NORTH_DIRECTION,rover.Direction );
+            Assert.AreEqual(Directions.North, rover.Direction );
         }        
         
         [Test]
         public void rover_with_one_command_moves_to_backward() {
             var point = new Point(0, 0);
-            var Direction = NORTH_DIRECTION;
+            var Direction = Directions.North;
 
             var rover = new Rover(point, Direction);
-            var commandsList = new List<string>(){"B"};
+            var commandsList = new List<CommandsValues>(){CommandsValues.Backward};
             rover.Execute(commandsList);
 
             Assert.AreEqual(0,rover.Point.x);
             Assert.AreEqual(-1,rover.Point.y);
-            Assert.AreEqual(NORTH_DIRECTION,rover.Direction );
+            Assert.AreEqual(Directions.North, rover.Direction );
         }        
         
         [Test]
         public void rover_with_one_command_moves_to_right() {
             var point = new Point(0, 0);
-            var Direction = NORTH_DIRECTION;
+            var Direction = Directions.North;
 
             var rover = new Rover(point, Direction);
-            var commandsList = new List<string>(){"R"};
+            var commandsList = new List<CommandsValues>(){CommandsValues.Right};
             rover.Execute(commandsList);
 
             Assert.AreEqual(0,rover.Point.x);
             Assert.AreEqual(0,rover.Point.y);
-            Assert.AreEqual("E",rover.Direction );
+            Assert.AreEqual(Directions.East,rover.Direction );
+        }        
+        
+        [Test]
+        public void rover_with_one_command_moves_to_left() {
+            var point = new Point(0, 0);
+            var Direction = Directions.North;
+
+            var rover = new Rover(point, Direction);
+            var commandsList = new List<CommandsValues>(){CommandsValues.Left};
+            rover.Execute(commandsList);
+
+            Assert.AreEqual(0,rover.Point.x);
+            Assert.AreEqual(0,rover.Point.y);
+            Assert.AreEqual(Directions.West, rover.Direction );
+        } 
+        
+        [Test]
+        public void rover_with_multiple_command_moves_to_left_front() {
+            var point = new Point(0, 0);
+            var Direction = Directions.North;
+
+            var rover = new Rover(point, Direction);
+            var commandsList = new List<CommandsValues>() { CommandsValues.Left, CommandsValues.Forward };
+            rover.Execute(commandsList);
+
+            Assert.AreEqual(-1,rover.Point.x);
+            Assert.AreEqual(0,rover.Point.y);
+            Assert.AreEqual(Directions.West, rover.Direction );
+        }
+        
+        [Test]
+        public void rover_with_multiple_command_moves_to_left_front_left_back_left_front_right_back() {
+            var point = new Point(0, 0);
+            var Direction = Directions.North;
+
+            var rover = new Rover(point, Direction);
+            var commandsList = new List<CommandsValues>() { CommandsValues.Left, CommandsValues.Forward, CommandsValues.Left, 
+                    CommandsValues.Backward, CommandsValues.Left, CommandsValues.Forward, CommandsValues.Right, CommandsValues.Backward };
+            rover.Execute(commandsList);
+
+            Assert.AreEqual(0,rover.Point.x);
+            Assert.AreEqual(2,rover.Point.y);
+            Assert.AreEqual(Directions.South, rover.Direction );
         }
     }
 }

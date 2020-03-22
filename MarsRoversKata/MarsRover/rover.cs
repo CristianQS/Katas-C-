@@ -1,24 +1,29 @@
 using System.Collections.Generic;
+using MarsRover.Factory;
 
 namespace MarsRover {
     public class Rover {
-        private Point point;
-        private string direction;
+        public Point Point { get; }
+        public Directions Direction { get; set; }
 
-        public Rover(Point point, string direction) {
-            this.point = point;
-            this.direction = direction;
+        public Rover(Point point, Directions direction) {
+            this.Point = point;
+            this.Direction = direction;
         }
 
-        public Point Point => point;
-
-        public string Direction => direction;
-
-        public void Execute(List<string> commandsList) {
+        public void Execute(List<CommandsValues> commandsList) {
+            var commandLogicFactory = new CommandLogicFactory(this);
             commandsList.ForEach(command => {
-                if (command.Equals("F")) this.point.y++;
-                if (command.Equals("B")) this.point.y--;
-                if (command.Equals("R")) this.direction = "E";
+                if (this.Direction == Directions.North) {
+                    commandLogicFactory.executeRoverNorthCommandLogic(command);
+                } else if (this.Direction == Directions.South) {
+                    commandLogicFactory.executeRoverSouthCommandLogic(command);
+                }
+                else if(this.Direction == Directions.West) {
+                    commandLogicFactory.executeRoverWestCommandLogic(command);
+                } else if(this.Direction == Directions.East) {
+                    commandLogicFactory.executeRoverEastCommandLogic(command);
+                }
             });
         }
     }
