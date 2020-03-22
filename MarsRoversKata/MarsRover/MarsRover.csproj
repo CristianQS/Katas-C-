@@ -45,6 +45,7 @@
     <Compile Include="Directions.cs" />
     <Compile Include="Factory\CommandLogicFactory.cs" />
     <Compile Include="Factory\CommandsLogic.cs" />
+    <Compile Include="Factory\EastCommandLogic.cs" />
     <Compile Include="Factory\NorthCommandLogic.cs" />
     <Compile Include="Factory\SouthCommandLogic.cs" />
     <Compile Include="Factory\WestCommandLogic.cs" />
