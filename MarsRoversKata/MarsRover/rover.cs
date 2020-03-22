@@ -20,7 +20,7 @@ namespace MarsRover {
                     commandLogicFactory.executeRoverSouthCommandLogic(command);
                 }
                 else if(this.Direction == Directions.West) {
-                    executeWestCommandsLogic(command);
+                    commandLogicFactory.executeRoverWestCommandLogic(command);
                 } else if(this.Direction == Directions.East) {
                     executeEastCommandsLogic(command);
                 }
@@ -33,15 +33,6 @@ namespace MarsRover {
             if (commandValues.Equals(CommandsValues.Right)) this.Direction = Directions.South;
             if (commandValues.Equals(CommandsValues.Left)) this.Direction = Directions.North;
         }
-
-        private void executeWestCommandsLogic(CommandsValues commandValues) {
-            if (commandValues.Equals(CommandsValues.Forward)) this.Point.x--;
-            if (commandValues.Equals(CommandsValues.Backward)) this.Point.x++;
-            if (commandValues.Equals(CommandsValues.Right)) this.Direction = Directions.North;
-            if (commandValues.Equals(CommandsValues.Left)) this.Direction = Directions.South;
-        }
-
-
 
     }
 }

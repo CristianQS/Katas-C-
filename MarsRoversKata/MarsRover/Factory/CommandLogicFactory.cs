@@ -13,5 +13,9 @@
         public Rover executeRoverSouthCommandLogic(CommandsValues command) {
             return new SouthCommandLogic(rover, command).execute();
         }
+
+        public Rover executeRoverWestCommandLogic(CommandsValues command) {
+            return  new WestCommandLogic(rover, command).execute();
+        }
     }
 }
