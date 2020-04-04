@@ -10,20 +10,20 @@ namespace MarsRover.Factory {
             Rover = rover;
         }
 
-        public Rover executeRoverNorthCommandLogic(CommandsValues command) {
-            return new NorthCommandLogic(Rover, command, Mars).execute();
+        public CommandsLogic executeRoverNorthCommandLogic(CommandsValues command) {
+            return new NorthCommandLogic(Rover, command, Mars);
         }
 
-        public Rover executeRoverSouthCommandLogic(CommandsValues command) {
-            return new SouthCommandLogic(Rover, command, Mars).execute();
+        public CommandsLogic executeRoverSouthCommandLogic(CommandsValues command) {
+            return new SouthCommandLogic(Rover, command, Mars);
         }
 
-        public Rover executeRoverWestCommandLogic(CommandsValues command) {
-            return  new WestCommandLogic(Rover, command, Mars).execute();
+        public CommandsLogic executeRoverWestCommandLogic(CommandsValues command) {
+            return  new WestCommandLogic(Rover, command, Mars);
         }
 
-        public Rover executeRoverEastCommandLogic(CommandsValues command) {
-            return new EastCommandLogic(Rover, command, Mars).execute();
+        public CommandsLogic executeRoverEastCommandLogic(CommandsValues command) {
+            return new EastCommandLogic(Rover, command, Mars);
         }
     }
 }

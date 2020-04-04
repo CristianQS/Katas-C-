@@ -16,13 +16,13 @@ namespace MarsRover {
             var commandLogicFactory = new CommandLogicFactory(this, mars);
             commandsList.ForEach(command => {
                 if (this.Direction == Directions.North) {
-                    commandLogicFactory.executeRoverNorthCommandLogic(command);
+                    commandLogicFactory.executeRoverNorthCommandLogic(command).execute();
                 } else if (this.Direction == Directions.South) {
-                    commandLogicFactory.executeRoverSouthCommandLogic(command);
+                    commandLogicFactory.executeRoverSouthCommandLogic(command).execute();
                 } else if(this.Direction == Directions.West) {
-                    commandLogicFactory.executeRoverWestCommandLogic(command);
+                    commandLogicFactory.executeRoverWestCommandLogic(command).execute();
                 } else if(this.Direction == Directions.East) {
-                    commandLogicFactory.executeRoverEastCommandLogic(command);
+                    commandLogicFactory.executeRoverEastCommandLogic(command).execute();
                 }
             });
         }
