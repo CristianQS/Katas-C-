@@ -16,7 +16,7 @@ namespace MarsRover.Factory {
         }
 
         public Rover execute() {
-            if (RoverPositionHelper.IsRoverCrossingTheVerticalEdge(Rover, -Planet.Latitude, out var isCrossing)) return isCrossing;
+            if (Rover.IsRoverCrossingTheVerticalEdge(-Planet.Latitude)) return Rover;
             RoverPositionHelper.checkIfThereIsAnObstaculeInTheVerticalAxis(Rover,Planet);
 
             if (Command.Equals(CommandsValues.Forward)) Rover.Point.y--;

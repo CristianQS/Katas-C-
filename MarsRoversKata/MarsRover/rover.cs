@@ -11,6 +11,21 @@ namespace MarsRover {
             this.Point = point;
             this.Direction = direction;
         }
+        public bool IsRoverCrossingTheVerticalEdge(int Latitude) {
+            if (Latitude == Point.y) {
+                Point.y = -Latitude;
+                return true;
+            }
+
+            return false;
+        }
+        public bool IsRoverCrossingTheHorizontalEdge(int Longitude) {
+            if (Longitude == Point.x) {
+                Point.x = -Longitude;
+                return true;
+            }
+            return false;
+        }
 
         public void Execute(List<CommandsValues> commandsList, Planet mars) {
             var commandLogicFactory = new CommandLogicFactory(this, mars);
