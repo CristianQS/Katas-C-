@@ -23,8 +23,5 @@ namespace MarsRover {
             return Map;
         }
 
-        public Dictionary<string, string> GetMap() {
-            return Map;
-        }
     }
 }
