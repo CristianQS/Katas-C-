@@ -21,15 +21,13 @@ namespace MarsRoverTest
 
         [Test]
         public void given_a_initial_point_and_direction_for_a_rover() {
-            //var point = Rover.Direction(0,0);
-           
             Assert.AreEqual(0, Rover.Point.x);
             Assert.AreEqual(0, Rover.Point.y);
             Assert.AreEqual(Directions.North, Rover.Direction);
         }
 
         [Test]
-        public void rover_with_one_command_moves_to_forward() {
+        public void moves_to_forward_with_one_command() {
 
             var commandsList = new List<CommandsValues>(){CommandsValues.Forward};
             Rover.Execute(commandsList,Mars);
@@ -40,7 +38,7 @@ namespace MarsRoverTest
         }        
         
         [Test]
-        public void rover_with_one_command_moves_to_backward() {
+        public void moves_to_backward_with_one_command() {
 
             var commandsList = new List<CommandsValues>(){CommandsValues.Backward};
             Rover.Execute(commandsList, Mars);
@@ -51,7 +49,7 @@ namespace MarsRoverTest
         }        
         
         [Test]
-        public void rover_with_one_command_moves_to_right() {
+        public void moves_to_right_with_one_command() {
             var commandsList = new List<CommandsValues>(){CommandsValues.Right};
             Rover.Execute(commandsList, Mars);
 
@@ -61,7 +59,7 @@ namespace MarsRoverTest
         }        
         
         [Test]
-        public void rover_with_one_command_moves_to_left() {
+        public void moves_to_left_with_one_command() {
             var commandsList = new List<CommandsValues>(){CommandsValues.Left};
             Rover.Execute(commandsList, Mars);
 
@@ -71,7 +69,7 @@ namespace MarsRoverTest
         } 
         
         [Test]
-        public void rover_with_multiple_command_moves_to_left_front() {
+        public void moves_to_left_front_with_multiple_command() {
 
             var commandsList = new List<CommandsValues>() { CommandsValues.Left, CommandsValues.Forward };
             Rover.Execute(commandsList, Mars);
@@ -82,7 +80,7 @@ namespace MarsRoverTest
         }
         
         [Test]
-        public void rover_with_multiple_command_moves_to_left_front_left_back_left_front_right_back() {
+        public void moves_to_left_front_left_back_left_front_right_back_with_multiple_command() {
 
             var commandsList = new List<CommandsValues>() { CommandsValues.Left, CommandsValues.Forward, CommandsValues.Left, 
                     CommandsValues.Backward, CommandsValues.Left, CommandsValues.Forward, CommandsValues.Right, CommandsValues.Backward };
@@ -94,7 +92,7 @@ namespace MarsRoverTest
         }
 
         [Test]
-        public void rover_cross_the_planet_from_west_edge_to_the_east_edge() {
+        public void cross_the_planet_from_west_edge_to_the_east_edge() {
             var point = new Point(-4,2);
             var direction = Directions.West;
             var rover = new Rover(point, direction);
@@ -109,7 +107,7 @@ namespace MarsRoverTest
         }
 
         [Test]
-        public void rover_cross_the_planet_from_east_edge_to_the_west_edge() {
+        public void cross_the_planet_from_east_edge_to_the_west_edge() {
             var point = new Point(4,2);
             var direction = Directions.East;
             var rover = new Rover(point, direction);
@@ -124,7 +122,7 @@ namespace MarsRoverTest
         }
 
         [Test]
-        public void rover_cross_the_planet_from_north_edge_to_the_south_edge() {
+        public void cross_the_planet_from_north_edge_to_the_south_edge() {
             var point = new Point(4,2);
             var direction = Directions.North;
             var rover = new Rover(point, direction);
@@ -139,7 +137,7 @@ namespace MarsRoverTest
         }
 
         [Test]
-        public void rover_cross_the_planet_from_south_edge_to_the_north_edge() {
+        public void cross_the_planet_from_south_edge_to_the_north_edge() {
             var point = new Point(4,-2);
             var direction = Directions.South;
             var rover = new Rover(point, direction);
