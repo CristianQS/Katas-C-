@@ -13,9 +13,9 @@ namespace MarsRover.Factory {
             Rover = rover;
         }
 
-        public Rover execute() {
+        public Rover Execute() {
             if (Rover.IsRoverCrossingTheHorizontalEdge(Planet.Longitude)) return Rover;
-            Rover.CheckIfThereIsAnObstaculeInTheHorizontalAxis(Planet);
+            Rover.CheckIfThereIsAnObstaculeInTheHorizontalAxis();
            
             if (Command.Equals(CommandsValues.Forward)) Rover.Point.x++;
             if (Command.Equals(CommandsValues.Backward)) Rover.Point.x--;

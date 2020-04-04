@@ -1,5 +1,4 @@
-﻿using System;
-using MarsRover.Enums;
+﻿using MarsRover.Enums;
 
 namespace MarsRover.Factory {
     public class NorthCommandLogic : CommandsLogic {
@@ -13,9 +12,9 @@ namespace MarsRover.Factory {
             Planet = planet;
         }
 
-        public Rover execute() {
+        public Rover Execute() {
             if (Rover.IsRoverCrossingTheVerticalEdge(Planet.Latitude )) return Rover;
-            Rover.CheckIfThereIsAnObstaculeInTheVerticalAxis(Planet);
+            Rover.CheckIfThereIsAnObstaculeInTheVerticalAxis();
 
             if (Command.Equals(CommandsValues.Forward)) Rover.Point.y++;
             if (Command.Equals(CommandsValues.Backward)) Rover.Point.y--;

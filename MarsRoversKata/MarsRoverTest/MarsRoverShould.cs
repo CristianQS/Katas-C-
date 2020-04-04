@@ -16,7 +16,7 @@ namespace MarsRoverTest
             Mars = new Mars(2,4);
             var point = new Point(0, 0);
             var Direction = Directions.North;
-            Rover = new Rover(point, Direction);
+            Rover = new Rover(point, Direction, Mars);
         }
 
         [Test]
@@ -30,7 +30,7 @@ namespace MarsRoverTest
         public void moves_to_forward_with_one_command() {
 
             var commandsList = new List<CommandsValues>(){CommandsValues.Forward};
-            Rover.Execute(commandsList,Mars);
+            Rover.Execute(commandsList);
 
             Assert.AreEqual(0,Rover.Point.x);
             Assert.AreEqual(1,Rover.Point.y);
@@ -41,7 +41,7 @@ namespace MarsRoverTest
         public void moves_to_backward_with_one_command() {
 
             var commandsList = new List<CommandsValues>(){CommandsValues.Backward};
-            Rover.Execute(commandsList, Mars);
+            Rover.Execute(commandsList);
 
             Assert.AreEqual(0,Rover.Point.x);
             Assert.AreEqual(-1,Rover.Point.y);
@@ -51,7 +51,7 @@ namespace MarsRoverTest
         [Test]
         public void moves_to_right_with_one_command() {
             var commandsList = new List<CommandsValues>(){CommandsValues.Right};
-            Rover.Execute(commandsList, Mars);
+            Rover.Execute(commandsList);
 
             Assert.AreEqual(0,Rover.Point.x);
             Assert.AreEqual(0,Rover.Point.y);
@@ -61,7 +61,7 @@ namespace MarsRoverTest
         [Test]
         public void moves_to_left_with_one_command() {
             var commandsList = new List<CommandsValues>(){CommandsValues.Left};
-            Rover.Execute(commandsList, Mars);
+            Rover.Execute(commandsList);
 
             Assert.AreEqual(0,Rover.Point.x);
             Assert.AreEqual(0,Rover.Point.y);
@@ -72,7 +72,7 @@ namespace MarsRoverTest
         public void moves_to_left_front_with_multiple_command() {
 
             var commandsList = new List<CommandsValues>() { CommandsValues.Left, CommandsValues.Forward };
-            Rover.Execute(commandsList, Mars);
+            Rover.Execute(commandsList);
 
             Assert.AreEqual(-1,Rover.Point.x);
             Assert.AreEqual(0,Rover.Point.y);
@@ -84,7 +84,7 @@ namespace MarsRoverTest
 
             var commandsList = new List<CommandsValues>() { CommandsValues.Left, CommandsValues.Forward, CommandsValues.Left, 
                     CommandsValues.Backward, CommandsValues.Left, CommandsValues.Forward, CommandsValues.Right, CommandsValues.Backward };
-            Rover.Execute(commandsList, Mars);
+            Rover.Execute(commandsList);
 
             Assert.AreEqual(0,Rover.Point.x);
             Assert.AreEqual(2,Rover.Point.y);
@@ -95,10 +95,10 @@ namespace MarsRoverTest
         public void cross_the_planet_from_west_edge_to_the_east_edge() {
             var point = new Point(-4,2);
             var direction = Directions.West;
-            var rover = new Rover(point, direction);
+            var rover = new Rover(point, direction, Mars);
 
             var commandsList = new List<CommandsValues>() { CommandsValues.Forward };
-            rover.Execute(commandsList, Mars);
+            rover.Execute(commandsList);
 
             Assert.AreEqual(4, rover.Point.x);
             Assert.AreEqual(2, rover.Point.y);
@@ -110,10 +110,10 @@ namespace MarsRoverTest
         public void cross_the_planet_from_east_edge_to_the_west_edge() {
             var point = new Point(4,2);
             var direction = Directions.East;
-            var rover = new Rover(point, direction);
+            var rover = new Rover(point, direction, Mars);
 
             var commandsList = new List<CommandsValues>() { CommandsValues.Forward };
-            rover.Execute(commandsList, Mars);
+            rover.Execute(commandsList);
 
             Assert.AreEqual(-4, rover.Point.x);
             Assert.AreEqual(2, rover.Point.y);
@@ -125,10 +125,10 @@ namespace MarsRoverTest
         public void cross_the_planet_from_north_edge_to_the_south_edge() {
             var point = new Point(4,2);
             var direction = Directions.North;
-            var rover = new Rover(point, direction);
+            var rover = new Rover(point, direction, Mars);
 
             var commandsList = new List<CommandsValues>() { CommandsValues.Forward };
-            rover.Execute(commandsList, Mars);
+            rover.Execute(commandsList);
 
             Assert.AreEqual(4, rover.Point.x);
             Assert.AreEqual(-2, rover.Point.y);
@@ -140,10 +140,10 @@ namespace MarsRoverTest
         public void cross_the_planet_from_south_edge_to_the_north_edge() {
             var point = new Point(4,-2);
             var direction = Directions.South;
-            var rover = new Rover(point, direction);
+            var rover = new Rover(point, direction, Mars);
 
             var commandsList = new List<CommandsValues>() { CommandsValues.Forward };
-            rover.Execute(commandsList, Mars);
+            rover.Execute(commandsList);
 
             Assert.AreEqual(4, rover.Point.x);
             Assert.AreEqual(2, rover.Point.y);
@@ -157,11 +157,11 @@ namespace MarsRoverTest
             var direction = Directions.South;
             Mars.Map["1,1"] = "X";
 
-            var rover = new Rover(point, direction);
+            var rover = new Rover(point, direction, Mars);
 
             var commandsList = new List<CommandsValues>() { CommandsValues.Forward };
 
-            Assert.Throws<NextPositionHasAnObstaculeException>(() => rover.Execute(commandsList, Mars));
+            Assert.Throws<NextPositionHasAnObstaculeException>(() => rover.Execute(commandsList));
         }
     }
 }
