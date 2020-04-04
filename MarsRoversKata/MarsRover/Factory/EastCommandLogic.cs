@@ -1,6 +1,5 @@
 ﻿using System;
 using MarsRover.Enums;
-using MarsRover.Shared;
 
 namespace MarsRover.Factory {
     public class EastCommandLogic : CommandsLogic {
@@ -16,7 +15,7 @@ namespace MarsRover.Factory {
 
         public Rover execute() {
             if (Rover.IsRoverCrossingTheHorizontalEdge(Planet.Longitude)) return Rover;
-            RoverPositionHelper.checkIfThereIsAnObstaculeInTheHorizontalAxis(Rover, Planet);
+            Rover.CheckIfThereIsAnObstaculeInTheHorizontalAxis(Planet);
            
             if (Command.Equals(CommandsValues.Forward)) Rover.Point.x++;
             if (Command.Equals(CommandsValues.Backward)) Rover.Point.x--;

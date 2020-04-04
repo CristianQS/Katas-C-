@@ -1,6 +1,5 @@
 ﻿using System;
 using MarsRover.Enums;
-using MarsRover.Shared;
 using MarsRover.Exceptions;
 
 namespace MarsRover.Factory {
@@ -17,7 +16,7 @@ namespace MarsRover.Factory {
 
         public Rover execute() {
             if (Rover.IsRoverCrossingTheVerticalEdge(-Planet.Latitude)) return Rover;
-            RoverPositionHelper.checkIfThereIsAnObstaculeInTheVerticalAxis(Rover,Planet);
+            Rover.CheckIfThereIsAnObstaculeInTheVerticalAxis(Planet);
 
             if (Command.Equals(CommandsValues.Forward)) Rover.Point.y--;
             if (Command.Equals(CommandsValues.Backward)) Rover.Point.y++;
