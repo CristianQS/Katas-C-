@@ -46,16 +46,16 @@ namespace MarsRover {
             commandsList.ForEach(command => {
                 switch (Direction) {
                     case Directions.North:
-                        CommandLogicFactory.executeRoverNorthCommandLogic(command).Execute(this, command, planet);
+                        CommandLogicFactory.GetRoverNorthCommandLogic().Execute(this, command, planet);
                         break;                  
                     case Directions.South:
-                        CommandLogicFactory.executeRoverSouthCommandLogic(command).Execute(this, command, planet);
+                        CommandLogicFactory.GetRoverSouthCommandLogic().Execute(this, command, planet);
                         break;                    
                     case Directions.West:
-                        CommandLogicFactory.executeRoverWestCommandLogic(command).Execute(this, command, planet);
+                        CommandLogicFactory.GetRoverWestCommandLogic().Execute(this, command, planet);
                         break;                    
                     case Directions.East:
-                        CommandLogicFactory.executeRoverEastCommandLogic(command).Execute(this, command, planet);
+                        CommandLogicFactory.GetRoverEastCommandLogic().Execute(this, command, planet);
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();

@@ -3,19 +3,19 @@
 namespace MarsRover.Factory {
     public static class CommandLogicFactory {
 
-        public static CommandsLogic executeRoverNorthCommandLogic(CommandsValues command) {
+        public static CommandsLogic GetRoverNorthCommandLogic() {
             return new NorthCommandLogic();
         }
 
-        public static CommandsLogic executeRoverSouthCommandLogic(CommandsValues command) {
+        public static CommandsLogic GetRoverSouthCommandLogic() {
             return new SouthCommandLogic();
         }
 
-        public static CommandsLogic executeRoverWestCommandLogic(CommandsValues command) {
+        public static CommandsLogic GetRoverWestCommandLogic() {
             return  new WestCommandLogic();
         }
 
-        public static CommandsLogic executeRoverEastCommandLogic(CommandsValues command) {
+        public static CommandsLogic GetRoverEastCommandLogic() {
             return new EastCommandLogic();
         }
     }
