@@ -2,20 +2,23 @@
 
 namespace MarsRover {
     public class RoverBuilder {
-        private Planet Planet;
-        private Point Point;
-        private Directions Direction;
+        private static Planet Planet;
+        private static Point Point;
+        private static Directions Direction;
 
-        public void WithMars(int latitude, int longitude) {
+        public RoverBuilder WithPlanet(int latitude, int longitude) {
             Planet = new Mars(latitude, longitude);
+            return this;
         }
 
-        public void WithPoint(int x, int y) {
+        public RoverBuilder WithPoint(int x, int y) {
             Point = new Point(x,y);
+            return this;
         }
 
-        public void WithDirections(Directions direction) {
+        public RoverBuilder WithDirections(Directions direction) {
             Direction = direction;
+            return this;
         }
 
         public Rover Build() {
