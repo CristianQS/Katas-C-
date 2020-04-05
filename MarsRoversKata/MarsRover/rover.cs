@@ -8,14 +8,14 @@ namespace MarsRover {
     public class Rover {
         public Point Point { get; }
         public Directions Direction { get; set; }
-        public Planet planet { get; }
+        public Planet Planet { get; }
         private const string OBSTACULE = "X";
 
 
         public Rover(Point point, Directions direction, Planet mars) {
             Point = point;
             Direction = direction;
-            planet  = mars;
+            Planet  = mars;
         }
         public bool IsRoverCrossingTheVerticalEdge(int latitude) {
             if (latitude != Point.y) return false;
@@ -29,16 +29,16 @@ namespace MarsRover {
         }
 
         public void CheckIfThereIsAnObstaculeInTheVerticalAxis() {
-            if (planet.Map[$"{Point.x},{Point.y - 1}"].Equals(OBSTACULE))
+            if (Planet.Map[$"{Point.x},{Point.y - 1}"].Equals(OBSTACULE))
                 throw new NextPositionHasAnObstaculeException();
-            if (planet.Map[$"{Point.x},{Point.y + 1}"].Equals(OBSTACULE))
+            if (Planet.Map[$"{Point.x},{Point.y + 1}"].Equals(OBSTACULE))
                 throw new NextPositionHasAnObstaculeException();
         }
 
         public void CheckIfThereIsAnObstaculeInTheHorizontalAxis() {
-            if (planet.Map[$"{Point.x - 1},{Point.y}"].Equals(OBSTACULE))
+            if (Planet.Map[$"{Point.x - 1},{Point.y}"].Equals(OBSTACULE))
                 throw new NextPositionHasAnObstaculeException();
-            if (planet.Map[$"{Point.x + 1},{Point.y}"].Equals(OBSTACULE))
+            if (Planet.Map[$"{Point.x + 1},{Point.y}"].Equals(OBSTACULE))
                 throw new NextPositionHasAnObstaculeException();
         }
 
@@ -46,16 +46,16 @@ namespace MarsRover {
             commandsList.ForEach(command => {
                 switch (Direction) {
                     case Directions.North:
-                        CommandLogicFactory.GetRoverNorthCommandLogic().Execute(this, command, planet);
+                        CommandLogicFactory.GetRoverNorthCommandLogic().Execute(this, command, Planet);
                         break;                  
                     case Directions.South:
-                        CommandLogicFactory.GetRoverSouthCommandLogic().Execute(this, command, planet);
+                        CommandLogicFactory.GetRoverSouthCommandLogic().Execute(this, command, Planet);
                         break;                    
                     case Directions.West:
-                        CommandLogicFactory.GetRoverWestCommandLogic().Execute(this, command, planet);
+                        CommandLogicFactory.GetRoverWestCommandLogic().Execute(this, command, Planet);
                         break;                    
                     case Directions.East:
-                        CommandLogicFactory.GetRoverEastCommandLogic().Execute(this, command, planet);
+                        CommandLogicFactory.GetRoverEastCommandLogic().Execute(this, command, Planet);
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();
