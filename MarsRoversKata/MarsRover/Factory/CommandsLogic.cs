@@ -3,6 +3,6 @@
 namespace MarsRover.Factory {
     public interface CommandsLogic {
 
-        Rover Execute();
+        Rover Execute(Rover rover, CommandsValues command, Planet planet);
     }
 }

@@ -2,25 +2,16 @@
 
 namespace MarsRover.Factory {
     public class WestCommandLogic : CommandsLogic {
-        public Rover Rover { get; }
-        public CommandsValues Command { get; }
-        public Planet Planet { get; }
 
-        public WestCommandLogic(Rover rover, CommandsValues command, Planet planet) {
-            Rover = rover;
-            Command = command;
-            Planet = planet;
-        }
+        public Rover Execute(Rover rover, CommandsValues command, Planet planet) {
+            if (rover.IsRoverCrossingTheHorizontalEdge(-planet.Longitude)) return rover;
+            rover.CheckIfThereIsAnObstaculeInTheHorizontalAxis();
 
-        public Rover Execute() {
-            if (Rover.IsRoverCrossingTheHorizontalEdge(-Planet.Longitude)) return Rover;
-            Rover.CheckIfThereIsAnObstaculeInTheHorizontalAxis();
-
-            if (Command.Equals(CommandsValues.Forward)) Rover.Point.x--;
-            if (Command.Equals(CommandsValues.Backward)) Rover.Point.x++;
-            if (Command.Equals(CommandsValues.Right)) Rover.Direction = Directions.North;
-            if (Command.Equals(CommandsValues.Left)) Rover.Direction = Directions.South;
-            return Rover;
+            if (command.Equals(CommandsValues.Forward)) rover.Point.x--;
+            if (command.Equals(CommandsValues.Backward)) rover.Point.x++;
+            if (command.Equals(CommandsValues.Right)) rover.Direction = Directions.North;
+            if (command.Equals(CommandsValues.Left)) rover.Direction = Directions.South;
+            return rover;
         }
     }
 }
