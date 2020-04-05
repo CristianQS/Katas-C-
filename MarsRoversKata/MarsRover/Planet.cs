@@ -6,7 +6,5 @@ namespace MarsRover {
         int Longitude { get; set; }
         Dictionary<string, string> Map { get; set; }
 
-        Dictionary<string,string> GetMap ();
-
     }
 }

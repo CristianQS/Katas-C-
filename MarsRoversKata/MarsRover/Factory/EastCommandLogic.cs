@@ -1,28 +1,18 @@
 ﻿using System;
 using MarsRover.Enums;
-using MarsRover.Shared;
 
 namespace MarsRover.Factory {
     public class EastCommandLogic : CommandsLogic {
-        public Rover Rover { get; }
-        public CommandsValues Command { get; }
-        public Planet Planet { get; }
 
-        public EastCommandLogic(Rover rover, CommandsValues command, Planet planet) {
-            Command = command;
-            Planet = planet;
-            Rover = rover;
-        }
-
-        public Rover execute() {
-            if (RoverPositionHelper.IsRoverCrossingTheHorizontalEdge(Rover, Planet.Longitude, out var isCrossing)) return isCrossing;
-            RoverPositionHelper.checkIfThereIsAnObstaculeInTheHorizontalAxis(Rover, Planet);
+        public Rover Execute(Rover rover, CommandsValues command, Planet planet) {
+            if (rover.IsRoverCrossingTheHorizontalEdge(planet.Longitude)) return rover;
+            rover.CheckIfThereIsAnObstaculeInTheHorizontalAxis();
            
-            if (Command.Equals(CommandsValues.Forward)) Rover.Point.x++;
-            if (Command.Equals(CommandsValues.Backward)) Rover.Point.x--;
-            if (Command.Equals(CommandsValues.Right)) Rover.Direction = Directions.South;
-            if (Command.Equals(CommandsValues.Left)) Rover.Direction = Directions.North;
-            return Rover;
+            if (command.Equals(CommandsValues.Forward)) rover.Point.x++;
+            if (command.Equals(CommandsValues.Backward)) rover.Point.x--;
+            if (command.Equals(CommandsValues.Right)) rover.Direction = Directions.South;
+            if (command.Equals(CommandsValues.Left)) rover.Direction = Directions.North;
+            return rover;
         }
     }
 }

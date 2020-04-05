@@ -1,29 +1,22 @@
 ﻿using MarsRover.Enums;
 
 namespace MarsRover.Factory {
-    public class CommandLogicFactory {
-        public Planet Mars { get; }
-        private Rover Rover;
+    public static class CommandLogicFactory {
 
-        public CommandLogicFactory(Rover rover, Planet mars) {
-            Mars = mars;
-            Rover = rover;
+        public static CommandsLogic GetRoverNorthCommandLogic() {
+            return new NorthCommandLogic();
         }
 
-        public Rover executeRoverNorthCommandLogic(CommandsValues command) {
-            return new NorthCommandLogic(Rover, command, Mars).execute();
+        public static CommandsLogic GetRoverSouthCommandLogic() {
+            return new SouthCommandLogic();
         }
 
-        public Rover executeRoverSouthCommandLogic(CommandsValues command) {
-            return new SouthCommandLogic(Rover, command, Mars).execute();
+        public static CommandsLogic GetRoverWestCommandLogic() {
+            return  new WestCommandLogic();
         }
 
-        public Rover executeRoverWestCommandLogic(CommandsValues command) {
-            return  new WestCommandLogic(Rover, command, Mars).execute();
-        }
-
-        public Rover executeRoverEastCommandLogic(CommandsValues command) {
-            return new EastCommandLogic(Rover, command, Mars).execute();
+        public static CommandsLogic GetRoverEastCommandLogic() {
+            return new EastCommandLogic();
         }
     }
 }
